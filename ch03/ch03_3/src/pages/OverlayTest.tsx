@@ -1,9 +1,17 @@
-import {Title} from '../components'
+import {Div, Icon, Overlay, Title} from '../components'
 
 export default function CopyMe() {
   return (
     <section className="mt-4">
-      <Title>CopyMe</Title>
+      <Title>OverlayTest</Title>
+      <Overlay opacityClass="bg-black/70">
+        <Div className="relative items-center justify-center p-8 bg-white fles h-1/2">
+          <Div className="absolute" right="1rem" top="1rem">
+            <Icon name="close" className="text-gray-500" />
+          </Div>
+          <p className="text-5xl">modal dialog box</p>
+        </Div>
+      </Overlay>
       <div className="mt-4"></div>
     </section>
   )
