@@ -1,75 +1,75 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BoardApi } from "../api/axiosInstance";
-import "./BoardWrite.css";
+import { productApi } from "../api/axiosInstance";
+import "./ProductInsert.css";
 
-const BoardWrite: React.FC = () => {
+const ProductInsert: React.FC = () => {
   const navigate = useNavigate();
 
-  const [board, setBoard] = useState({
-    title: "",
-    contents: "",
-    creatorId: "",
+  const [product, setProduct] = useState({
+    name: "",
+    price: "",
+    amount: "",
   });
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
-    setBoard({ ...board, [name]: value });
+    setProduct({ ...product, [name]: value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!board.title || !board.contents) {
-      alert("제목과 내용을 입력해주세요.");
+    if (!product.name || !product.price) {
+      alert("상품 이름과 가격을 입력해주세요.");
       return;
     }
 
     try {
-      await BoardApi.post("/write", board);
-      alert("글이 성공적으로 등록되었습니다.");
+      await productApi("/insert", product);
+      alert("상품이 성공적으로 등록되었습니다.");
       navigate("/");
     } catch (error) {
       console.error("등록 에러", error);
-      alert("등록 중 오류가 발생했습니다.");
+      alert("상품 등록 중 오류가 발생했습니다.");
     }
   };
 
   return (
     <div className="write-page">
       <div className="write-card">
-        <h2 className="write-title">새 게시글 작성</h2>
+        <h2 className="write-title">새 상품 등록</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>작성자</label>
+            <label>상품명</label>
             <input
               className="write-input"
-              name="creatorId"
-              value={board.creatorId}
+              name="name"
+              value={product.name}
               onChange={handleChange}
-              placeholder="작성자 ID를 입력하세요"
+              placeholder="상품를 입력하세요"
             />
           </div>
           <div className="form-group">
-            <label>제목</label>
+            <label>가격</label>
             <input
               className="write-input"
-              name="title"
-              value={board.title}
+              name="price"
+              value={product.price}
               onChange={handleChange}
-              placeholder="제목을 입력하세요"
+              placeholder="가격을 입력하세요"
             />
           </div>
           <div className="form-group">
-            <label>내용</label>
+            <label>수량</label>
             <textarea
               className="write-textarea"
-              name="contents"
-              value={board.contents}
+              name="amount"
+              value={product.amount}
               onChange={handleChange}
-              placeholder="내용을 작성하세요"
+              placeholder="수량을 작성하세요"
             />
           </div>
           <div className="write-button-group">
@@ -90,4 +90,4 @@ const BoardWrite: React.FC = () => {
   );
 };
 
-export default BoardWrite;
+export default ProductInsert;

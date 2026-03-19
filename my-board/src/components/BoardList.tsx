@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import api from "../api/axiosInstance";
+import { BoardApi } from "../api/axiosInstance.ts";
 import type { Board } from "../types/Board.ts";
 import "../components/BoardList.css";
 
@@ -8,8 +8,7 @@ const BoardList: React.FC = () => {
   const [list, setList] = useState<Board[]>([]);
 
   useEffect(() => {
-    api
-      .get<Board[]>("")
+    BoardApi.get<Board[]>("")
       .then((res) => setList(res.data))
       .catch(console.error);
   }, []);

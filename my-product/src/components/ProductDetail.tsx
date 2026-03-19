@@ -1,35 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { BoardApi } from "../api/axiosInstance.ts";
-import type { Board } from "../types/Board.ts";
-import "./BoardDetail.css";
+import { productApi } from "../api/axiosInstance";
+import type { Product } from "../types/Product";
+import "./ProductDetail.css";
 
-const BoardDetail: React.FC = () => {
+const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const [board, setBoard] = useState<Board | null>(null);
+  const [product, setProduct] = useState<Product | null>(null);
 
   useEffect(() => {
-    BoardApi.get<Board>(`/${id}`) //localhost:8080/BoardApi/board/60
-      .then((res) => setBoard(res.data))
+    productApi
+      .get<Product>(`/${id}`)
+      .then((res) => setProduct(res.data))
       .catch(console.error);
   }, [id]);
 
   const handleUpdate = async () => {
-    if (!board) return;
-    await BoardApi.put(`/${id}`, board);
+    if (!product) return;
+    await productApi.put(`/${id}`, product);
     alert("수정 완료");
     navigate("/");
   };
 
   const handleDelete = async () => {
     if (!window.confirm("삭제하시겠습니까?")) return;
-    await BoardApi.delete(`/${id}`);
+    await ProductApi.delete(`/${id}`);
     alert("삭제 완료");
     navigate("/");
   };
 
-  if (!board) return <div className="detail-page">Loading...</div>;
+  if (!product) return <div className="detail-page">Loading...</div>;
 
   return (
     <div className="detail-page">
@@ -37,29 +38,33 @@ const BoardDetail: React.FC = () => {
         <h2 className="">게시글 상세</h2>
 
         <div className="form-group">
-          <label>작성자</label>
+          <label>상품명</label>
           <input
             className="input-field"
-            value={board.creatorId || ""}
-            onChange={(e) => setBoard({ ...board, creatorId: e.target.value })}
+            value={product.name || ""}
+            onChange={(e) => setProduct({ ...product, name: e.target.value })}
           />
         </div>
 
         <div className="form-group">
-          <label>제목</label>
+          <label>가격</label>
           <input
             className="input-field"
-            value={board.title}
-            onChange={(e) => setBoard({ ...board, title: e.target.value })}
+            value={product.price}
+            onChange={(e) =>
+              setProduct({ ...product, price: Number(e.target.value) })
+            }
           />
         </div>
 
         <div className="form-group">
-          <label>내용</label>
+          <label>수량</label>
           <textarea
             className="textarea-field"
-            value={board.contents}
-            onChange={(e) => setBoard({ ...board, contents: e.target.value })}
+            value={product.amount}
+            onChange={(e) =>
+              setProduct({ ...product, amount: Number(e.target.value) })
+            }
           />
         </div>
 
@@ -68,10 +73,10 @@ const BoardDetail: React.FC = () => {
             목록으로
           </button>
           <button className="btn btn-update" onClick={handleUpdate}>
-            수정
+            상품 수정
           </button>
           <button className="btn btn-delete" onClick={handleDelete}>
-            삭제
+            상품 삭제
           </button>
         </div>
       </div>
@@ -79,4 +84,4 @@ const BoardDetail: React.FC = () => {
   );
 };
 
-export default BoardDetail;
+export default ProductDetail;

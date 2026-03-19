@@ -24,10 +24,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": [
-    "src",
-    "../my-product/src/types/Product.ts",
-    "../my-product/src/components/ProductList.tsx",
-    "../my-product/src/components/ProductDetail.tsx"
-  ]
+  "include": ["src"]
 }
