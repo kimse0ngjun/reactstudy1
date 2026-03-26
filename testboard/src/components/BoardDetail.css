@@ -1,0 +1,140 @@
+.detail-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 20px;
+}
+
+.detail-card {
+  width: 100%;
+  max-width: 800px;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f1f2f6;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.detail-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #2d3436;
+  margin-bottom: 30px;
+  border-left: 6px solid #6c5ce7;
+  padding-left: 15px;
+}
+
+.form-group {
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #636e72;
+  margin-bottom: 8px;
+  margin-left: 4px;
+}
+
+.input-field,
+.textarea-field {
+  width: 100%;
+  padding: 15px;
+  border: 1.5px solid #dfe6e9;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #2d3436;
+  background-color: #f9f9fb;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.input-field:focus,
+.textarea-field:focus {
+  outline: none;
+  border-color: #6c5ce7;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.1);
+}
+
+.textarea-field {
+  height: 300px;
+  resize: none;
+  line-height: 1.6;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #f1f2f6;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-list {
+  background-color: #f1f2f6;
+  color: #636e72;
+}
+
+.btn-list:hover {
+  background-color: #dfe6e9;
+  color: #2d3436;
+}
+
+.btn-update {
+  background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+  color: white;
+}
+
+.btn-update:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+}
+
+.btn-delete {
+  background-color: #ff7675;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #d63031;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(214, 48, 49, 0.3);
+}
+
+.loading {
+  font-size: 18px;
+  color: #636e72;
+  font-weight: 500;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

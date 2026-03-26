@@ -1,0 +1,123 @@
+.write-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 20px;
+}
+
+.write-card {
+  width: 100%;
+  max-width: 700px;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f1f2f6;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.write-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #2d3436;
+  margin-bottom: 30px;
+  text-align: left;
+  border-left: 6px solid #6c5ce7;
+  padding-left: 15px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #636e72;
+  margin-bottom: 8px;
+  margin-left: 4px;
+}
+
+.write-input,
+.write-textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1.5px solid #dfe6e9;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #2d3436;
+  transition: all 0.3s ease;
+  background-color: #f9f9fb;
+  box-sizing: border-box;
+}
+
+.write-input:focus,
+.write-textarea:focus {
+  outline: none;
+  border-color: #6c5ce7;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.1);
+}
+
+.write-textarea {
+  height: 250px;
+  resize: none;
+  line-height: 1.6;
+}
+
+.write-button-group {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.btn-submit {
+  flex: 2;
+  padding: 15px;
+  background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3);
+  filter: brightness(1.1);
+}
+
+.btn-cancel {
+  flex: 1;
+  padding: 15px;
+  background-color: #f1f2f6;
+  color: #636e72;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-cancel:hover {
+  background-color: #dfe6e9;
+  color: #2d3436;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
